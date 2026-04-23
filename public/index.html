@@ -173,6 +173,7 @@
   }
 
   function sendMessage() { handleUserInput(document.getElementById('user-input').value.trim()); }
+
   function resetChat() {
     conversationHistory = [];
     document.getElementById('messages').innerHTML = '';
@@ -181,6 +182,7 @@
     isLoading = false;
     startConversation();
   }
+
   document.getElementById('user-input').addEventListener('keydown', e => { if (e.key === 'Enter') sendMessage(); });
 
   function startConversation() {
