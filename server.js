@@ -38,7 +38,8 @@ FORMATO - siempre JSON puro:
   "showWhatsapp": false,
   "quickReplies": ["opción 1", "opción 2"]
 }
-products: solo turnos 3 y 4, máximo 4. showWhatsapp: true solo en cierre. quickReplies: 2-3 opciones o array vacío.`;
+products: solo turnos 3 y 4, máximo 4. showWhatsapp: true solo en cierre. quickReplies: 2-3 opciones o array vacío.
+CRÍTICO: Respondé ÚNICAMENTE con el objeto JSON. Sin texto antes ni después. Solo JSON puro.`;
 
 function buscarConocimiento(mensajeUsuario) {
   const texto = mensajeUsuario.toLowerCase();
