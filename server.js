@@ -112,9 +112,15 @@ app.post('/api/chat', async (req, res) => {
     const rawText = data.content?.[0]?.text || '{}';
     let parsed;
     try {
-      parsed = JSON.parse(rawText.replace(/```json|```/g, '').trim());
+      const clean = rawText.replace(/```json|```/g, '').trim();
+      const jsonMatch = clean.match(/\{[\s\S]*\}/);
+      if (jsonMatch) {
+        parsed = JSON.parse(jsonMatch[0]);
+      } else {
+        parsed = { text: clean, products: [], showWhatsapp: false, quickReplies: [] };
+      }
     } catch {
-      parsed = { text: rawText, products: [], showWhatsapp: false, quickReplies: [] };
+      parsed = { text: 'Hubo un problema al procesar la respuesta.', products: [], showWhatsapp: false, quickReplies: [] };
     }
 
     return res.json(parsed);
